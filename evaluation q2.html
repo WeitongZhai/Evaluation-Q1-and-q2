@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q2</title>
+    <style>
+        td {
+            text-align:center;
+        }
+
+        table {
+            width: 30%; 
+        }
+
+  
+    </style>
+</head>
+<body>
+        <p><b>Region filter</b></p>
+    <select id="countriesDropdown" onchange="filterTableA()">
+        <option>All</option>
+        <option>US</option>
+        <option>EU</option>
+        <option>CA</option>
+    </select>
+      <p><b>Model filter</b></p>
+      <select id="modelDropdown" onchange="filterTableB()">
+        <option>All</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+        <option>D</option>
+      </select> 
+
+    <div id= "table"></div>
+    <script>
+        const data = [
+        {region: 'US', model: 'A', sales: 150},
+        {region: 'US', model: 'B', sales: 120},
+        {region: 'US', model: 'C', sales: 350},
+        {region: 'EU', model: 'A', sales: 200},
+        {region: 'EU', model: 'B', sales: 100},
+        {region: 'EU', model: 'C', sales: 250},
+        {region: 'CA', model: 'A', sales: 200},
+        {region: 'CA', model: 'B', sales: 100},
+        {region: 'CA', model: 'C', sales: 230},
+        {region: 'CA', model: 'D', sales: 400},
+    ];
+
+    let html = "<table  id = myTable  border= 1px solid black>";
+        html +="<tr>"
+            html += "<td>"+"<b>region</b>"+"</td>";
+            html += "<td>"+"<b>model</b>"+"</td>";
+            html += "<td>"+"<b>sales</b>"+"</td>";
+        html += "</tr>"
+        let a = 0;
+   
+    for (let i = 0; i < data.length; i++) {
+        html += "<tr>";
+        html += "<td>"+data[i].region+"</td>";
+        html += "<td>"+data[i].model+"</td>";
+        html += "<td>"+data[i].sales+"</td>";
+        
+        html+="</tr>";
+       /* let front = data[i].region;
+        let behind = data[i+1].region;
+        if ( front !== behind ) {
+            let sum = 0;
+            for (let j = a; j < i-a ; j++ ) {
+            
+                sum = sum + data[j].sales;
+            }
+            a = i;
+            html += "<tr>";
+             html += "<td>"+data[i].region+"</td>";
+            html += "<td>"+"sum"+"</td>";
+            html += "<td>"+sum+"</td>";
+                
+                html+="</tr>";
+        }*/
+
+    }
+    html+="</table>";
+     document.getElementById("table").innerHTML = html;
+   
+     function filterTableA() {
+        var input, filter, table, tr, td, i;
+        input = document.getElementById("countriesDropdown");
+        filter = input.value;
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                 if (filter === "all") {
+                tr[i].style.display = "";
+                }      
+                else if (td.innerHTML.indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                }   else {
+                     tr[i].style.display = "none";
+                }
+            }       
+        }
+     }
+   function filterTableB() {
+        var input, filter, table, tr, td, i;
+        input = document.getElementById("modelDropdown");
+        filter = input.value;
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+                 if (filter === "all") { 
+                tr[i].style.display = "";
+                    }      
+                 else if (td.innerHTML.indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                    }   
+                else {
+                     tr[i].style.display = "none";
+                     }
+            }       
+       } 
+    }
+  
+
+
+
+    </script>
+</body>
+</html>

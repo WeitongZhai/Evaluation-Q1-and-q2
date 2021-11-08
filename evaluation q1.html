@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q1</title>
+    <style>
+        td {
+            text-align:center;
+        }
+
+        table {
+            width: 30%; 
+        }
+    </style>
+</head>
+<body>
+    
+    <div id= "table"></div>
+    <script>
+        const data = [
+        {region: 'US', model: 'A', sales: 150},
+        {region: 'US', model: 'B', sales: 120},
+        {region: 'US', model: 'C', sales: 350},
+        {region: 'EU', model: 'A', sales: 200},
+        {region: 'EU', model: 'B', sales: 100},
+        {region: 'EU', model: 'C', sales: 250},
+        {region: 'CA', model: 'A', sales: 200},
+        {region: 'CA', model: 'B', sales: 100},
+        {region: 'CA', model: 'C', sales: 230},
+        {region: 'CA', model: 'D', sales: 400},
+    ];
+
+    let html = "<table  border= 1px solid black>";
+        html +="<tr>"
+            html += "<td>"+"<b>region</b>"+"</td>";
+            html += "<td>"+"<b>model</b>"+"</td>";
+            html += "<td>"+"<b>sales</b>"+"</td>";
+        html += "</tr>"
+        let a = 0;
+   
+    for (let i = 0; i < data.length; i++) {
+        html += "<tr>";
+        html += "<td>"+data[i].region+"</td>";
+        html += "<td>"+data[i].model+"</td>";
+        html += "<td>"+data[i].sales+"</td>";
+        
+        html+="</tr>";
+       /* let front = data[i].region;
+        let behind = data[i+1].region;   To be honest, I do not konw why here Cannot read property 'region' of undefined
+        if ( front !== behind ) {
+            let sum = 0;
+            for (let j = a; j < i-a ; j++ ) {
+            
+                sum = sum + data[j].sales;
+            }
+            a = i;
+            html += "<tr>";
+             html += "<td>"+data[i].region+"</td>";
+            html += "<td>"+"sum"+"</td>";
+            html += "<td>"+sum+"</td>";
+                
+                html+="</tr>";
+        }*/  
+
+    }
+    html+="</table>";
+     document.getElementById("table").innerHTML = html;
+
+    </script>
+</body>
+</html>
